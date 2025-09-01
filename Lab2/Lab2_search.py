@@ -1,6 +1,7 @@
 import timeit
 
 lst = [1, 2, 3]
+print("\nInitial List:", lst)
 
 def search(lst, data):
 
@@ -9,16 +10,21 @@ def search(lst, data):
             return i
 
 def func1():
-    print(search(lst, 2))
-
-
-execution_search = timeit.timeit(func1, number=1)
-print(f"Execution time For search() function: {execution_search} seconds")
-
+    lst = [1, 2, 3]
+    search(lst, 2)
 
 def func2():
+    lst = [1, 2, 3]
     lst.index(2)
 
+print(f"My function: {search(lst, 2)}")
+print("Python's function: ", lst.index(2))
 
-execution_py = timeit.timeit(func2, number=1)
-print(f"Execution time for index() function : {execution_py} seconds")
+execution_search = timeit.timeit(func1, number=10000)
+print(f"\nMy time: {execution_search} sec")
+execution_py = timeit.timeit(func2, number=10000)
+print(f"Python's time: {execution_py} sec")
+
+difference = execution_search - execution_py
+print(f'Difference (User - Python): {difference} sec')
+print()
