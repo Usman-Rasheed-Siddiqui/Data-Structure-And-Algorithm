@@ -15,8 +15,8 @@ def func1():
     ins(lst, 6, 2)
 
 def func2():
-    #lst = 
-    [1, 2, 3].insert(6, 2)
+    lst = [1, 2, 3]
+    lst.insert(6, 2)
 
 print(f"Insertion using my function: {ins(lst, 6, 2)}")
 lst.insert(2, 6)
@@ -29,3 +29,5 @@ print(f"Execution time insert() function : {execution_py} seconds")
 
 difference = execution_ins - execution_py
 print(f'Difference (User - Python): {difference} seconds')
+
+

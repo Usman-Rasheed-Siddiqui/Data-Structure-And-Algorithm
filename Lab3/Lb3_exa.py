@@ -1,3 +1,4 @@
+
 # Binary operation is a logarithmic operation
 
 import timeit
@@ -29,7 +30,10 @@ def binary_search(data, item, verbose):
     else:
         loc = None
 
-    return f"\nItem found at location '{loc}'" if loc is not None else "Item not found"
+    if loc:
+        return f"\nItem found at location '{loc}'"
+    else:
+        "Item not found"
 
 
 data = input('\nEnter a list with spaces: ').split()
@@ -47,11 +51,12 @@ binary_search(data, item, verbose=True)
 def func1():
     return binary_search(data, item, verbose=False)
 
-def func2():
+def func2(verbose = False):
     try:
         data.index(item)
     except ValueError:
-        print("Item not found")
+        if verbose:
+            print("Item not found")
 
 execution_search = timeit.timeit(func1, number=10000)
 

@@ -1,8 +1,6 @@
 
 import timeit
 
-# Deletion
-
 # Dictionary
 print("\nInitial Dictionary:",{1: "one", 2:"two", 3: "three"})
 
@@ -57,10 +55,12 @@ def func4():
     tple = (item for item in tple if item != "two")
 
 temp_tple = (1, [4], {3: "Three"}, "two")
-print("Deletion using my function:", del_tple(temp_tple, "two"))
+print("Deletion using my function:", 
+      del_tple(temp_tple, "two"))
 
 temp_tple = (1, [4], {3: "Three"}, "two")
-print("Deletion using Python's function:", tuple(item for item in temp_tple if item != "two"))
+print("Deletion using Python's function:", 
+      tuple(item for item in temp_tple if item != "two"))
 
 execution_user2 = timeit.timeit(func3, number=10000)
 print(f"\nExecution time for my function: {execution_user2} seconds")
@@ -70,3 +70,6 @@ print(f"Execution time for built-in function: {execution_py2} seconds")
 
 difference = execution_user2 - execution_py2
 print(f'\nDifference (User - Python): {difference} seconds')
+
+
+print()

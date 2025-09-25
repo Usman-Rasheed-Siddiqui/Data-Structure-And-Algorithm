@@ -1,6 +1,5 @@
 
 import timeit
-# Search
 
 # Dictionary:
 print("\nInitial Dictionary:",{1: "one",2:"two", 3: "three"})

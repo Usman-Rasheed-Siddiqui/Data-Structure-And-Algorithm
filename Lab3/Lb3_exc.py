@@ -1,4 +1,3 @@
-# Binary operation is a logarithmic operation
 
 def binary_search(data, item):
 
@@ -24,8 +23,8 @@ def binary_search(data, item):
     else:
         data.append(item)
         sorted(data)
-        return f"\nItem inserted at position {data.index(item)} as it was not found" \
-               f"\nNew list: {data}"
+        return f"\nItem inserted at position {data.index(item)} " \
+               f"as it was not found \nNew list: {data}"
 
 order = input("Enter order [(ascending (a)/ descending (d)]: ").lower()
 data = input('\nEnter a list with spaces: ').split()

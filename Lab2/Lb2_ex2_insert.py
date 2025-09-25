@@ -1,8 +1,9 @@
 
+
 import timeit
 
 # Dictionary
-print("Intial Dictionary:",{1: "one", 3: "three"})
+print("\nIntial Dictionary:",{1: "one", 3: "three"})
 
 def ins_dic(dic, key, value):
 
@@ -18,10 +19,10 @@ def func2():
     dic[2] = "two"
 
 temp_dic = {1: "one", 3: "three"}
-print("My function:", ins_dic(temp_dic, 2, "two"))
+print("Insertion using my function:", ins_dic(temp_dic, 2, "two"))
 
 temp_dic[2] = "two"
-print("Python's function:", temp_dic)
+print("Insertion using Python's function:", temp_dic)
 
 execution_user = timeit.timeit(func1, number=10000)
 print(f"\nMy time: {execution_user} sec")
@@ -30,7 +31,7 @@ execution_py = timeit.timeit(func2, number=10000)
 print(f"Python's time: {execution_py} sec")
 
 difference = execution_user - execution_py
-print(f'\nDifference: {difference} sec')
+print(f'\nDifference (User - Python): {difference} sec')
 
 
 # Tuple
@@ -52,11 +53,11 @@ def func4():
     tple = tple[:2] + (6, ) + tple[2:]
 
 temp_tple = (1, "two", {}, [4])
-print("My function:", ins_tple(temp_tple, 6, 2))
+print("Insertion using my function:", ins_tple(temp_tple, 6, 2))
 
 temp_tple = (1, "two", {}, [4])
 temp_tple = temp_tple[:2] + (6, ) + temp_tple[2:]
-print("Python's function:", temp_tple)
+print("Insertion using Python's function:", temp_tple)
 
 
 execution_user2 = timeit.timeit(func3, number=10000)
@@ -66,5 +67,5 @@ execution_py2 = timeit.timeit(func4, number=10000)
 print(f"Python's time: {execution_py2} sec")
 
 difference = execution_user2 - execution_py2
-print(f'\nDifference: {difference} sec')
+print(f'\nDifference (User - Python): {difference} sec')
 print()

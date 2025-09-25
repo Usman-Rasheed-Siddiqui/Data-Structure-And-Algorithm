@@ -33,4 +33,4 @@ print(f"Execution time remove() function: {execution_py} seconds")
 
 difference = execution_dele - execution_py
 print(f'Difference (User - Python): {difference} seconds')
-print()
+

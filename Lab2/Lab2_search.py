@@ -27,4 +27,4 @@ print(f"Python's time: {execution_py} sec")
 
 difference = execution_search - execution_py
 print(f'Difference (User - Python): {difference} sec')
-print()
+
