@@ -14,7 +14,7 @@ def matMul(A, B, cA, rB):
         for j in range(len(B[0])):
             C[i][j] = 0
             for k in range(len(A[0])):
-                C[i][j] = C[i][j] + A[i][k]*B[k][j]
+                C[i][j] += A[i][k]*B[k][j]
 
     return C
 
@@ -28,4 +28,3 @@ C = matMul(A, B, cA, rB)
 print("New Matric C:")
 for row in C:
     print(row)
-

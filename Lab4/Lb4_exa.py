@@ -2,17 +2,17 @@
 # Matrix Multiplication
 
 def matMul(A, B, n):
-    C = []
-    for i in range(n):
-        C.append([])
-        for j in range(n):
-            C[i].append(0)
+    C = [[0 for i in range(n)] for i in range(n)]
+    # for i in range(n):
+    #     C.append([])
+    #     for j in range(n):
+    #         C[i].append(0)
 
     for i in range(n):
         for j in range(n):
             C[i][j] = 0
             for k in range(n):
-                C[i][j] = C[i][j] + A[i][k]*B[k][j]
+                C[i][j] += + A[i][k]*B[k][j]
 
     return C
 

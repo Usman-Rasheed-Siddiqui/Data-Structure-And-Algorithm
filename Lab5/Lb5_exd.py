@@ -1,5 +1,4 @@
 
-
 B = [[5, -7, 0, 0], [1, 4, 3, 0], [0, 9, -3, 6], [0, 0, 2, 4]]
 n = 3*(len(B)) - 2
 
@@ -17,4 +16,3 @@ def STORETRIDIAGONAL(B, n):
     return U
 U = STORETRIDIAGONAL(B, n)
 print(U)
-n = int((len(U) + 2)/3)

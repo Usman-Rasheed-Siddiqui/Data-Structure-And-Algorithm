@@ -1,13 +1,20 @@
 
-import numpy
-from scipy.sparse import diags
+import numpy as np
+from scipy.sparse import csr_matrix
 
-lower = [5, -7, 0]
-middle = [1, 4, 3, 0]
-upper = [9, -3, 6]
+# 3 x 6 array
+dense_array = np.array([
+    [1, 0, 0, 0, 2, 0],
+    [0, 0, 3, 0, 0, 0],
+    [4, 0, 0, 5, 0, 6]
+])
 
-A_sparse = diags([lower, middle, upper], offsets=[-1, 0, 1], format = "csr")
-print(A_sparse)
+csr = csr_matrix(dense_array)
+print("CSR Representation:")
+print(csr)
+print("Data:", csr.data)
+print("Indices:", csr.indices)
+print("Indptr:", csr.indptr)
 
-A_matrix = A_sparse.toarray()
-print(A_matrix)
+array_back = csr.toarray()
+print("Converted to Dense Array:\n",array_back)

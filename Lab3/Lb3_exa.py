@@ -33,7 +33,7 @@ def binary_search(data, item, verbose):
     if loc:
         return f"\nItem found at location '{loc}'"
     else:
-        "Item not found"
+        return "Item not found"
 
 
 data = input('\nEnter a list with spaces: ').split()
