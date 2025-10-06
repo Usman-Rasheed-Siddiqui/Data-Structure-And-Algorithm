@@ -10,25 +10,34 @@ class DoublyLinkedList:
         self.node = Node(value)
 
     def __len__(self):
-        
-        a = self
+        a = self.node
         sum = 0
-
         while a is not None:
             sum += 1
             a = a.left
 
-        a = self.left
-
+        a = self.node.right
         while a is not None:
             sum += 1
             a = a.right
 
         return sum
-    
+
+    def display(self):
+        node = self.node
+
+        while node and node.left is not None:
+            node = node.left
+        print("None", end = " <-> ")
+        while node is not None:
+            print(node.item, end=" <-> ")
+            node = node.right
+        if node is None:
+            print(node)    
+
     def insertright(self, value):
-        q = self
-        r = self.right
+        q = self.node
+        r = self.node.right
         node = Node(value)
 
         if q is not None:
@@ -41,8 +50,8 @@ class DoublyLinkedList:
 
     def insertleft(self, value):
         
-        p = self.left
-        q = self
+        p = self.node.left
+        q = self.node
 
         node = Node(value)
 
@@ -54,8 +63,9 @@ class DoublyLinkedList:
             node.right = q
             node.left = p
 
+    
     def search(self, value):
-        q = self
+        q = self.node
 
         while q is not None and q.item != value:
             q = q.left
@@ -63,7 +73,7 @@ class DoublyLinkedList:
         if q is not None:
             return q
         
-        q = self.right
+        q = self.node.right
 
         while q is not None and q.item != value:
             q = q.right
@@ -71,12 +81,13 @@ class DoublyLinkedList:
         if q is not None:
             return q
 
+        return None
     
     def delete(self, target):
 
-        p = self.left
-        q = self
-        r = self.right
+        p = self.node.left
+        q = self.node
+        r = self.node.right
 
         if q.item == target:
             if p is not None:
@@ -113,15 +124,16 @@ class DoublyLinkedList:
 
             return q
         
-    def display(self):
-        node = self
 
-        if node is not None:
-            node = node.left
-
-        while node is not None:
-            print(node, end=" <-> ")
-            node = node.right
-            if node is None:
-                print(node)
-
+dl = DoublyLinkedList(20)
+print("Insertion: ")
+dl.insertright(10)
+dl.insertleft(9)
+dl.insertright(11)
+dl.insertleft(8)
+dl.display()
+print("Searching: ")
+print(dl.search(9))
+print("Deletion:")
+dl.delete(8)
+dl.display()

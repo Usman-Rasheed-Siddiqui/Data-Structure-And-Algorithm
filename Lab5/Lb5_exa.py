@@ -9,11 +9,12 @@ def STORETRIANGULAR(A, n):
 
     return U
 
-A = [[4, 0, 0, 0], [3, 5, 0, 0], [1, 6, 2, 0], [8, 0, 5, 9]]
+A = [[4, 0, 0, 0], [3, 5, 0, 0], [1, 6, 2, 0],
+     [8, 0, 5, 9]]
 length = len(A)
 n = int((length/2)*(length+1))
-
 U = STORETRIANGULAR(A, n)
+
 print("Sparse Matrix:",U)
 
 n = int((-1 + (1 + 8*(len(U)))**0.5)/2)

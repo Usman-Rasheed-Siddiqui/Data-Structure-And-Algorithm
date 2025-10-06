@@ -30,6 +30,13 @@ class LinkedList:
         
         return size
 
+    def display(self):
+        current = self.head
+        while current:
+            print(current.item, end = " -> ")
+            current = current.next
+        print("None")
+
     def insert(self, value, index):
 
         node = Node(value)
@@ -87,23 +94,19 @@ class LinkedList:
                 precursor = cursor
                 cursor = cursor.next
 
-    def display(self):
-        current = self.head
-        while current:
-            print(current.item, end = " -> ")
-            current = current.next
-        print("None")
+        return None
+
 
 
 ll = LinkedList()
 ll.display()
-ll.insert(10, 0)   # [10]
-ll.insert(20, 1)   # [10, 20]
+print("Insertions: ")
+ll.insert(10, 0)
+ll.insert(20, 1)
+ll.insert(15, 1)
 ll.display()
-print(ll.search(10).next)
-ll.insert(15, 1)   # [10, 15, 20]
-ll.insert(30, 100) # large index -> append at end [10, 15, 20, 30]
-ll.display()
+print("Searching:",ll.search(10))
+print("Deletion: ")
 ll.delete(15)
 ll.display()
 

@@ -15,4 +15,6 @@ def STORETRIDIAGONAL(B, n):
                 U[i] = 0
     return U
 U = STORETRIDIAGONAL(B, n)
-print(U)
+print("Sparse Matrix:",U)
+
+

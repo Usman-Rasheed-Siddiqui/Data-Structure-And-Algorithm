@@ -4,14 +4,6 @@ def RETRIEVETRIDIAGONAL(U, n):
     l = 0
     for j in range(n):
         for k in range(n):
-            # if j == k:
-            #     B[j][k] = U[l]
-            #     l += 1
-            # elif (j - k) == -1 or (j - k) == 1:
-            #     B[j][k] = U[l]
-            #     l += 1
-            # else:
-            #     B[j][k] = 0
             if abs(j - k) <= 1:
                 B[j][k] = U[2*j + k]
             
@@ -24,4 +16,5 @@ U = [5, -7, 1, 4, 3, 9, -3, 6, 2, 4]
 n = int((len(U) + 2)/3)
 
 B = RETRIEVETRIDIAGONAL(U, n)
-print(B)
+print("Tridiagonal Matrix:",B)
+
