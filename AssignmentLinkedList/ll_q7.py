@@ -3,8 +3,6 @@ from SinglyLinkedList import ListNode
 def newHead(H, x):
     res = H.search(x)
 
-    a = H
-
     if res[0]:
         H = res[2]
         return H
