@@ -44,7 +44,8 @@ class Stack:
             print("Stack:")
             maximum = len(str(max(self.stack)))
             for i in range(len(self.stack)-1, -1, -1):
-                print("|", " "*maximum, self.stack[i], " "*maximum, "|")
+                print("|", " "*maximum, self.stack[i],
+                       " "*maximum, "|")
             print()
 
 

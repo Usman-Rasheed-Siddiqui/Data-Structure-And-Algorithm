@@ -1,7 +1,8 @@
 
 from life import LifeGrid
 
-init_config = [ (1, 1), (2, 2), (3, 2) ]
+
+init_config = [ (1, 2), (2, 1), (2, 2), (2, 3) ]
 
 grid_width = 5
 grid_height = 5
@@ -39,7 +40,6 @@ def draw(grid):
                 print("O", end = " ")
             else:
                 print(".", end = " ")
-
         print()
     
     print("-" * (2*grid.numCols()))

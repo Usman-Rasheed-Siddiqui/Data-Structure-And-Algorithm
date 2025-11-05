@@ -22,4 +22,3 @@ num = shell(array, n)
 print("After Sorting:", num)
 
 
-    

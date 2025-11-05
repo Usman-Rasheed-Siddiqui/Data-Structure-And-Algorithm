@@ -14,6 +14,15 @@ class LifeGrid:
     def numCols(self):
         return self._grid.numCols()
     
+    def isLiveCell(self, row, col):
+        return self._grid.get(row, col) == LifeGrid.LIVE_CELL
+
+    def clearCell(self, row, col):
+        self._grid.set(row, col, LifeGrid.DEAD_CELL)
+
+    def setCell(self, row, col):
+        self._grid.set(row, col, LifeGrid.LIVE_CELL)
+
     def configure(self, coordList):
         
         for i in range(self.numRows()):
@@ -23,16 +32,7 @@ class LifeGrid:
         for coord in coordList:
             self.setCell(coord[0], coord[1])
 
-    
-    def isLiveCell(self, row, col):
-        return self._grid[row, col] == LifeGrid.LIVE_CELL
 
-    def clearCell(self, row, col):
-        self._grid[row, col] = LifeGrid.DEAD_CELL
-
-    def setCell(self, row, col):
-        self._grid[row, col] = LifeGrid.LIVE_CELL
-    
     def numLiveNeighbours(self, row, col):
         count = 0
 

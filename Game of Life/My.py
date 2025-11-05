@@ -1,43 +1,50 @@
 
-class Array2DNew:
+class Array2D:
     def __init__(self, numRows, numCols):
-        self.grid = [[0]*numCols for _ in range(numRows)]
-        self.numRows = numRows
-        self.numCols = numCols
+        self._grid = [[0]*numCols for _ in range(numRows)]
+        self._numRows = numRows
+        self._numCols = numCols
 
-    def getElement(self, row, col):
-        return self.grid[row][col]
-    
-    def setElement(self, row, col, value=1):
-        self.grid[row][col] = value
-
-    def clear(self, value):
-        for i in range(self.numRows):
-            for j in range(self.numCols):
-                self.grid[i][j] = value
-
-class LifeGridNew:
-    LIVECELL = 1
-    DEADCELL  = 0
-
-    def __init__(self, numRows, numCols):
-        self._grid = Array2DNew(numRows, numCols)
-    
     def numRows(self):
-        return self._grid.numRows
+        return self._numRows
     
     def numCols(self):
-        return self._grid.numCols
+        return self._numCols
+    
+    def set(self, row, col, value):
+        self._grid[row][col] = value
+    
+    def get(self, row, col):
+        return self._grid[row][col]
+    
+    def clear(self, value):
+        for i in range(self.numRows()):
+            for j in range(self.numCols()):
+                self.set(i, j, value)
+
+
+class LifeGrid:
+    LiveCell = 1
+    DeadCell = 0
+    def __init__(self, numRows, numCols):
+        self._grid = Array2D(numRows, numCols)
+        self.configure(list())
+    
+    def numRows(self):
+        return self._grid.numRows()
+
+    def numCols(self):
+        return self._grid.numCols()
+
+    def setCell(self, row, col):
+        self._grid.set(row, col, LifeGrid.LiveCell)
+
+    def clearCell(self, row, col):
+        self._grid.set(row, col, LifeGrid.DeadCell)
 
     def isLiveCell(self, row, col):
-        return self._grid.getElement(row, col) == LifeGridNew.LIVECELL
+        return self._grid.get(row, col) == LifeGrid.LiveCell
     
-    def clearCell(self, row, col):
-        self._grid.setElement(row, col, LifeGridNew.DEADCELL)
-    
-    def setCell(self, row, col):
-        self._grid.setElement(row, col)
-
     def configure(self, coordlist):
         for i in range(self.numRows()):
             for j in range(self.numCols()):
@@ -48,61 +55,53 @@ class LifeGridNew:
 
     def numLiveNeighbours(self, row, col):
         count = 0
-        for i in range(row-1, row + 2):
-            for j in range(col-1, col+2):
-
+        for i in range(row - 1, row + 2):
+            for j in range(col - 1, col + 2):
                 if i == row and j == col:
                     continue
                 
                 if (0 <= i < self.numRows()) and (0 <= j < self.numCols()):
                     if self.isLiveCell(i, j):
                         count += 1
-
         return count
 
-class GameOfLife:
-    def __init__(self, gen, width, height, coordList):
-        self.gen = gen
-        self.grid = LifeGridNew(width, height)
-        self.grid.configure(coordList)
-    
-    def evolve(self):
-        liveCells = list()
+def evolve(grid):
+    liveCells = list()
 
-        for i in range(self.grid.numRows()):
-            for j in range(self.grid.numCols()):
+    for i in range(grid.numRows()):
+        for j in range(grid.numCols()):
+            neighbours = grid.numLiveNeighbours(i, j)
 
-                neighbours = self.grid.numLiveNeighbours(i, j)
+            if (neighbours == 2 and grid.isLiveCell(i, j)) or (neighbours == 3):
+                liveCells.append((i, j))
 
-                if (neighbours == 2 and self.grid.isLiveCell(i, j)) or (neighbours == 3):
-                    liveCells.append((i, j))
+    grid.configure(liveCells)
 
-        self.grid.configure(liveCells)
+def draw(grid):
+    for i in range(grid.numRows()):
+        for j in range(grid.numCols()):
+            if grid.isLiveCell(i, j):
+                print("O", end=" ")
+            else:
+                print(".", end = " ")
+        print()
 
-    
-    def draw(self):
-        for i in range(self.grid.numRows()):
-            for j in range(self.grid.numCols()):
-                if self.grid.isLiveCell(i, j):
-                    print("O", end = " ")
-                
-                else:
-                    print(".", end=" ")
-            print()
+    print("- "*grid.numCols())
 
-        print("-" * (2*self.grid.numCols()))
 
-    
 def main():
-    init_config = [(1, 2), (2, 2), (3, 2)]
-    grid = GameOfLife(3, 5, 5, init_config)
+    gridHeight = int(input("Enter height for the grid: "))
+    gridWidth = int(input("Enter width for the grid: "))
+    
+    gen = int(input("Enter number of generations: "))
 
-    print("Generation 0")
-    grid.draw()
-    for i in range(grid.gen):
-        grid.evolve()
-        print(f"Generation {i+1}")
-        grid.draw()
+    grid = LifeGrid(gridWidth, gridHeight)
+    grid.configure([(1, 2), (2, 1), (2, 2), (2, 3)])
+
+    draw(grid)
+    for i in range(gen):
+        evolve(grid)
+        draw(grid)
 
 if __name__ == "__main__":
     main()

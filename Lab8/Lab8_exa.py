@@ -1,5 +1,5 @@
 
-from Lab7_exa import Stack
+from Stack import Stack
 
 def EvalPostFix(p):
     p += " )"
@@ -18,7 +18,7 @@ def EvalPostFix(p):
         else:
             t = stack.pop()
             nt = stack.pop()
-            result = int(eval(str(nt) + element + str(t)))
+            result = int(eval(str(nt) + ("**" if element=="^" else element) + str(t)))
             stack.push(result)
 
         i += 1
