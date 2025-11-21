@@ -1,6 +1,5 @@
 
-
-def HeapInsert(array, x):
+def HeapInsertion(array, x):
     if not array:
         array.append(x)
         return array
@@ -18,11 +17,11 @@ def HeapInsert(array, x):
 
     return array
 
-def HeapDelete(array):
+def HeapDeletion(array):
     if not array:
         return array
 
-    min = array[0]
+    minimum = array[0]
     last = array.pop()
     if array:
         array[0] = last
@@ -46,15 +45,11 @@ def HeapDelete(array):
             array[i], array[smallest] = array[smallest], array[i]
             i = smallest
 
-    return array, min
+    return array, minimum
 
-array = [1, 5, 3, 12, 8, 9, 7]
+array = [8, 22, 33, 25, 44, 40, 55, 55, 33]
 print("Heap:", array)
 
-array = HeapInsert(array, 4)
-print("Inserting: 4")
-print("Heap after Insertion:", array)
-
-array, min = HeapDelete(array)
-print("Deleted Minimum Value:", min)
-print("Heap after Deletion:", array)
+array = HeapInsertion(array, 11)
+print("Insert: 11")
+print("After Insertion:", array)
